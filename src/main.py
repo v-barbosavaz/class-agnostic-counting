@@ -14,7 +14,7 @@ parser.add_argument('--optimizer', default='adam', choices=['adam'], type=str)
 parser.add_argument('--mode', default='pretrain', choices=['pretrain', 'adapt'], type=str,
                     help='pretrain on tracking data or adapt to specific dataset.')
 parser.add_argument('--dataset', default='imagenet',
-                    choices=['imagenet', 'vgg_cell', 'hela_cell', 'car'],
+                    choices=['imagenet', 'vgg_cell', 'hela_cell', 'car', 'ucf_cc_50'],
                     type=str, help='pretrain on tracking data or adapt to specific dataset.')
 parser.add_argument('--lr', default=0.0005, type=float)
 parser.add_argument('--warmup_ratio', default=0, type=float)
@@ -155,7 +155,7 @@ def adapt_gmn():
                  normal_lr, tbcallbacks]
 
     model.fit_generator(trn_gen,
-                        steps_per_epoch=600,
+                        steps_per_epoch=10,
                         epochs=args.epochs,
                         validation_data=val_gen,
                         validation_steps=100,

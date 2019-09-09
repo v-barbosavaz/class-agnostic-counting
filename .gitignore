@@ -2,3 +2,5 @@
 *.pyc
 models/*
 logs/*
+.DS_Store
+datasets/*

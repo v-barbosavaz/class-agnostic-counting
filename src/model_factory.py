@@ -124,7 +124,7 @@ def two_stream_matching_networks(cg, adapt=False, sync=True):
         # bn is trick, because of the disparity of training and inference mode
         for layer in layers:
             if not (isinstance(layer, type(keras.layers.BatchNormalization()))
-                    or 'adapt' in layer.name 
+                    or 'adapt' in layer.name
                     or 'l2' in layer.name):
                 layer.trainable = False
             #else:
@@ -138,6 +138,5 @@ def two_stream_matching_networks(cg, adapt=False, sync=True):
 
     # ==> compile model
     opt = keras.optimizers.Adam(1e-3)
-    model.compile(optimizer=opt, loss=center_weighted_mse_loss)
+    model.compile(optimizer=opt, loss=center_weighted_mse_loss, metrics=['accuracy', 'mse'])
     return model
-

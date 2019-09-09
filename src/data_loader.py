@@ -57,6 +57,12 @@ class get_config(object):
             self.outputdims = (64, 64, 1)
             self.pad = 0
 
+        elif self.dataset == 'ucf_cc_50':
+            self.imgdims = (1200, 1200, 3)
+            self.patchdims = (64, 64, 3)
+            self.outputdims = (200, 200, 1)
+            self.pad = 0
+
         else:
             raise IOError('==> unknown data set.')
 
@@ -65,4 +71,3 @@ class get_config(object):
             self.trn_lb = data['trn_lb']
             self.val_lst = data['val_lst']
             self.val_lb = data['val_lb']
-
